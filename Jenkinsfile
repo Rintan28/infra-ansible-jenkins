@@ -19,7 +19,7 @@ pipeline {
         stage('Run Ansible Playbook') {
             steps {
                 sshagent(['ca12f8e2-13fd-46aa-ba90-89e549f3b8df']) {
-                    sh 'ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i host.ini deploy.yml || exit 1'
+                    sh 'ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i host.ini deploy.yml --ask-become-pass || exit 1'
                 }
             }
         }
